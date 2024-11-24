@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Welcome to the most luxurious hotel in Noida, Uttar Pradesh">
+  <meta name="keywords" name="hotel, noida hotel, luxurious hotels in noida">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" media="screen and (max-width: 769px)" 
+  href="CSS/mobile.css">
+  <title>Hostal Nuevo Puesto</title>
+  <style>
+    p{
+        text-align: center;
+    }
+
+    h2{
+        text-align: center;
+    }
+
+    .main {
+        min-width: 100%; /* Establece el ancho mínimo del contenedor principal al 100% */
+        background-color: #2b2b2b; /* Establece un color de fondo gris oscuro */
+        text-align: center; /* Centra el texto */
+    }
+
+    .main__heading {
+        font-weight: 600; /* Peso de la fuente semi-negrita */
+        font-size: 2.25em; /* Tamaño de la fuente grande */
+        margin-bottom: 0.75em; /* Margen inferior para separación */
+        text-align: center; /* Centra el texto */
+        color: #eceff1; /* Color de texto claro */
+        padding-top: 10%;
+    }
+
+    .cards {
+        position: relative; /* Posición relativa para elementos hijos */
+    }
+
+    .cards__inner {
+        display: flex; /* Usa flexbox para el layout */
+        flex-wrap: wrap; /* Permite que los elementos se envuelvan en múltiples filas */
+        gap: 2em; /* Espacio entre los elementos */
+        margin-top: 2rem;/* Margen alrededor del contenedor */
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding-bottom: 3rem; 
+    }
+
+    .card {
+        --flow-space: 0.5em; /* Variable personalizada para espacio entre elementos */
+        --hsl: var(--hue), var(--saturation), var(--lightness); /* Variable HSL para el color */
+        flex: 1 1 14rem; /* Flexibilidad del elemento, ocupando al menos 14rem */
+        padding: 1.5em 2em; /* Padding interno */
+        display: grid; /* Usa grid para el layout interno */
+        grid-template-rows: auto auto auto 1fr; /* Define filas en la cuadrícula */
+        align-items: start; /* Alinea elementos al inicio */
+        gap: 1.25em; /* Espacio entre elementos en la cuadrícula */
+        color: #eceff1; /* Color de texto claro */
+        background-color: #2b2b2b; /* Color de fondo gris oscuro */
+        border: 1px solid #eceff133; /* Borde semi-transparente */
+        border-radius: 15px; /* Bordes redondeados */
+    }
+
+    /* Estilos para cada tarjeta con diferentes colores */
+    .card:nth-child(1) {
+        --hue: 165; /* Color para la primera tarjeta */
+        --saturation: 82.26%;
+        --lightness: 51.37%;
+    }
+
+    .card:nth-child(2) {
+        --hue: 291.34; /* Color para la segunda tarjeta */
+        --saturation: 95.9%;
+        --lightness: 61.76%;
+    }
+
+    .card:nth-child(3) {
+        --hue: 338.69; /* Color para la tercera tarjeta */
+        --saturation: 100%;
+        --lightness: 48.04%;
+    }
+
+    .card__bullets {
+        line-height: 1.4; /* Altura de línea para una mejor legibilidad */
+    }
+
+    .card__bullets li::before {
+        display: inline-block; /* Permite que el ícono se alinee al lado del texto */
+        content: url("data:image/svg+xml,..."); /* Ícono SVG de un check */
+        transform: translatey(0.25ch); /* Ajusta la posición del ícono */
+        margin-right: 1ch; /* Espacio a la derecha del ícono */
+    }
+
+    .card__heading {
+        font-size: 1.05em; /* Tamaño de fuente para el encabezado de la tarjeta */
+        font-weight: 600; /* Peso de la fuente semi-negrita */
+    }
+
+    .card__price {
+        font-size: 1.75em; /* Tamaño grande para el precio */
+        font-weight: 700; /* Peso de la fuente negrita */
+    }
+
+    .flow > * + * {
+        margin-top: var(--flow-space, 1.25em); /* Margen entre elementos de la clase flow */
+    }
+
+    .cta {
+        display: block; /* Hace que el botón sea un bloque */
+        align-self: end; /* Alinea el botón al final del contenedor */
+        margin: 1em 0 0.5em 0; /* Margen para separación */
+        text-align: center; /* Centra el texto del botón */
+        text-decoration: none; /* Elimina el subrayado */
+        color: #fff; /* Color de texto blanco */
+        background-color: #0d0d0d; /* Color de fondo oscuro para el botón */
+        padding: 0.7em; /* Padding interno del botón */
+        border-radius: 10px; /* Bordes redondeados del botón */
+        font-size: 1rem; /* Tamaño de fuente del botón */
+        font-weight: 600; /* Peso de la fuente semi-negrita */
+    }
+
+
+
+    .overlay .card {
+        background-color: hsla(var(--hsl), 0.15); /* Color de fondo semi-transparente */
+        border-color: hsla(var(--hsl), 1); /* Color de borde */
+        box-shadow: 0 0 0 1px inset hsl(var(--hsl)); /* Sombra interna */
+    }
+
+    .overlay .cta {
+        display: block; /* Hace que el botón sea un bloque */
+        grid-row: -1; /* Coloca el botón al final de la cuadrícula */
+        width: 100%; /* Ancho completo del botón */
+        background-color: hsl(var(--hsl)); /* Color de fondo para el botón */
+        box-shadow: 0 0 0 1px hsl(var(--hsl)); /* Sombra para el botón */
+    }
+
+    :not(.overlay) > .card {
+        transition: 400ms background ease; /* Transición suave para el fondo de las tarjetas */
+        will-change: background; /* Indica que se va a cambiar el fondo */
+    }
+
+    :not(.overlay) > .card:hover {
+        --lightness: 95%; /* Cambia la variable de luz al pasar el mouse */
+        background: hsla(var(--hsl), 0.1); /* Color de fondo al pasar el mouse */
+    }
+</style>
+  </style>
+</head>
+<body>
+<header>
+  <nav id="navbar">
+    <div class="container">
+      <div class="logo"><a href="Index.html"><img class="tm-logo" src="img/logo.png" alt="Majestic Hotel"></a></div>
+        <ul>
+          <li><a class="current" href="Index.html">Inicio</a></li>
+          <li><a href="About.html">Cuartos</a></li>
+          <li><a href="Contact.html">Reservar</a></li>
+        </ul>
+      </div>
+  </nav>
+</header>
+<section id="about-info" class="bg-light py-3">
+  <div class="container">
+    <div class="info-left">
+      <h1 class="l-heading"><span class="text-primary">
+        Camas</h1>
+    </div>
+  </div>
+</section>
+<div class="clr"></div>
+
+<main class="main flow">
+  <h1 class="main__heading">Precio</h1>
+  <ain class="main__cards cards">
+  <div class="cards__inner">
+      <div class="cards__card card">
+          <h2 class="card__heading">Camas individuales (hab compartida)</h2>
+          <p class="card__price">$20000</p>
+
+          <a href="reservas.html" class="card__cta cta">Reservar</a>
+      </div>
+      <div class="cards__card card">
+          <h2 class="card__heading">Camas Matrimoniales (hab compartida)</h2>
+          <p class="card__price">$3700 por persona</p>
+          <a href="reservas.html" class="card__cta cta">Reservar</a>
+      </div>
+      <div class="cards__card card">
+          <h2 class="card__heading">Para 4 personas baño privado </h2>
+          <p class="card__price">$26000</p>
+          <a href="reservas.html" class="card__cta cta">Reservar</a>
+      </div>
+  </div>
+  <div class="cards__inner">
+      <div class="cards__card card">
+          <h2 class="card__heading">Matrimonial baño compartido </h2>
+          <p class="card__price">$9500</p>
+          <a href="reservas.html" class="card__cta cta">Reservar</a>
+      </div>
+      <div class="cards__card card">
+          <h2 class="card__heading">Matrimonial baño privado</h2>
+          <p class="card__price">$11500</p>
+          <a href="reservas.html" class="card__cta cta">Reservar</a>
+      </div>
+      <div class="cards__card card">
+          <h2 class="card__heading">Para 8 personas baño privado</h2>
+          <p class="card__price">$4500 por persona</p>
+          <a href="reservas.html" class="card__cta cta">Reservar</a>
+      </div>
+  </div>
+  <div class="overlay cards__inner"></div>
+</main>
+<footer id="main-footer">
+  <p class="bold">Sobre Nosotros</p>
+  <p>Somos un equipo apasionado por la hospitalidad, comprometido a brindar a nuestros huéspedes una experiencia de alojamiento única y memorable en la hermosa ciudad de Salta. Desde nuestra fundación en 1999, hemos evolucionado de una casa de pensión a un moderno hostal, manteniendo siempre nuestro enfoque en la calidad del servicio y el bienestar de nuestros visitantes.</p>    
+  </div>
+</footer>
+</body>
+</html>
